@@ -1,10 +1,5 @@
 ﻿using BulkyBook.DataAccess.Data;
 using BulkyBook.DataAccess.Repository.IRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BulkyBook.DataAccess.Repository
 {
@@ -15,9 +10,15 @@ namespace BulkyBook.DataAccess.Repository
         {
             _db = db;
             Category = new CategoryRepository(_db);
+            CoverType= new CoverTypeRepository(_db);
+            Product = new ProductRepository(_db);
+            Company = new CompanyRepository(_db);
             SP_Call = new SP_Call(_db);
         }
         public ICategoryRepository Category { get; private set; }
+        public ICoverTypeRepository CoverType { get; private set; }
+        public IProductRepository Product { get; }
+        public ICompanyRepository Company { get; }  
         public ISP_Call SP_Call { get; private set; }
 
         public void Dispose()
